@@ -666,6 +666,8 @@ def testStr(cleartext, keysize=16, modeName = "CBC"):
     print ('Random key test', 'Mode:', modeName)
     print ('cleartext:', cleartext)
     key =  generateRandomKey(keysize)
+    # error spot
+    # ord expected string of length 1, but int found
     print ('Key:', [ord(x) for x in key])
     mode = AESModeOfOperation.modeOfOperation[modeName]
     cipher = encryptData(key, cleartext, mode)
