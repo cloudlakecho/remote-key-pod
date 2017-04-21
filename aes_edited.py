@@ -18,8 +18,10 @@
     work partially - March 10, 2017
     issue:
         TypeError: ord() expected string of length 1, but int found - March 10, 2017
+            fixed by Python version - April 21, 2017
+        TypeError: object of type 'map' has no len() - April 21, 2017
 """
-
+    
 import os
 import sys
 import math
@@ -617,7 +619,10 @@ def encryptData(key, data, mode=AESModeOfOperation.modeOfOperation["CBC"]):
     key = map(ord, key)
     if mode == AESModeOfOperation.modeOfOperation["CBC"]:
         data = append_PKCS7_padding(data)
+        
+    ## error spot: TypeError: object of type 'map' has no len()
     keysize = len(key)
+
     assert keysize in AES.keySize.values(), 'invalid key size: %s' % keysize
     # create a new iv using random data
     iv = [ord(i) for i in os.urandom(16)]
@@ -666,9 +671,12 @@ def testStr(cleartext, keysize=16, modeName = "CBC"):
     print ('Random key test', 'Mode:', modeName)
     print ('cleartext:', cleartext)
     key =  generateRandomKey(keysize)
-    # error spot
+    # error spot - fixed by checking the python version
     # ord expected string of length 1, but int found
-    print ('Key:', [ord(x) for x in key])
+    if int(sys.version[:1])<3:
+        print ('Key:', [ord(x) for x in key])
+    else:
+        print ('Key:', [x for x in key])
     mode = AESModeOfOperation.modeOfOperation[modeName]
     cipher = encryptData(key, cleartext, mode)
     print ('Cipher:', [ord(x) for x in cipher])
