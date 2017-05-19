@@ -616,6 +616,10 @@ def encryptData(key, data, mode=AESModeOfOperation.modeOfOperation["CBC"]):
     vector.
 
     """
+    print("The given key: %s" % key)
+    print("The length of the given key: %d" % len(key))
+    keysize_given = len(key)
+
     key = map(ord, key)
     if mode == AESModeOfOperation.modeOfOperation["CBC"]:
         data = append_PKCS7_padding(data)
