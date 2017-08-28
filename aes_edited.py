@@ -14,11 +14,14 @@
 
 """
     edited to mainly for version 3.5 - March 10, 2017
+        not the latest one
 
     work partially - March 10, 2017
     issue:
         TypeError: ord() expected string of length 1, but int found - March 10, 2017
         In Python 3, map returns an iterator not a list:
+        
+        
 """
 
 import os
