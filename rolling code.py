@@ -40,6 +40,10 @@ def run(total_bit):
 
 
 if __name__ == '__main__':
-    total_bit = 40;
+    total_bit = 40; total_num = 40;
     rolling_code = run(total_bit)
-    print("The rolling code is %s" % rolling_code)
+    #print("The rolling code is %s" % rolling_code)
+    group = [run(total_bit) for i in range(total_num)]
+    #print(type(group), len(group), len(group[0]))
+    group_2D = np.asarray(group).reshape(total_bit, total_num)
+    #print(group_2D, type(group_2D[0, 0]))
