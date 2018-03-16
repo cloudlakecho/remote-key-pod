@@ -19,12 +19,12 @@
 # Python 3.5 code
 
 
-from numpy import *
+import numpy as np
 import random
 import matplotlib.pyplot as plt
 
 from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
+from numpy import *
 
 
 def run(total_bit):
@@ -39,11 +39,16 @@ def run(total_bit):
     return rolling_code
 
 
-if __name__ == '__main__':
-    total_bit = 40; total_num = 40;
+def main():
+    total_bit = 40;
+    total_num = 40;
     rolling_code = run(total_bit)
-    #print("The rolling code is %s" % rolling_code)
+    # print("The rolling code is %s" % rolling_code)
     group = [run(total_bit) for i in range(total_num)]
-    #print(type(group), len(group), len(group[0]))
+    # print(type(group), len(group), len(group[0]))
     group_2D = np.asarray(group).reshape(total_bit, total_num)
-    #print(group_2D, type(group_2D[0, 0]))
+    print(group_2D, type(group_2D[0, 0]))
+
+
+if __name__ == '__main__':
+    main()
