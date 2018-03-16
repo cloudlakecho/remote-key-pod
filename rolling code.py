@@ -47,7 +47,8 @@ def main():
     group = [run(total_bit) for i in range(total_num)]
     # print(type(group), len(group), len(group[0]))
     group_2D = np.asarray(group).reshape(total_bit, total_num)
-    print(group_2D, type(group_2D[0, 0]))
+    print(group_2D)
+    print(type(group_2D[0, 0]))
 
 
 if __name__ == '__main__':
