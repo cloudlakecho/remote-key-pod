@@ -49,7 +49,8 @@ def main():
     group_2D = np.asarray(group).reshape(total_bit, total_num)
     print(group_2D)
     print(type(group_2D[0, 0]))
-
+    
+    # Change character to RGB color for visualization
 
 if __name__ == '__main__':
     main()
